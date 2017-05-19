@@ -10,6 +10,7 @@ public class player_controller : MonoBehaviour {
 	public Text countText;
 	public Text wintext;
 	public Text pickup_points;
+	public HearthBar hearthBar;
 
 	private Rigidbody rb;
 	private int count;
@@ -20,7 +21,7 @@ public class player_controller : MonoBehaviour {
 		count = 0;
 		SetCountText ();
 		wintext.text = "";
-		pickup_points.text = "";
+		//pickup_points.text = "";
 		//anim = GetComponents <Animator> ();
 
 	}
@@ -46,6 +47,7 @@ public class player_controller : MonoBehaviour {
 
 			count = count + points;
 			SetCountText ();
+			hearthBar.modifyHealth (Random.Range(-2,2));
 		}
 
 	}
@@ -53,7 +55,7 @@ public class player_controller : MonoBehaviour {
 	void SetCountText ()
 	{ 
 		countText.text = "Score : " + count.ToString () + " pts";
-		pickup_points.text = "+ " + points;
+		//pickup_points.text = "+ " + points;
 
 		if (count >= 100) 
 		{
