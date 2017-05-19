@@ -1,0 +1,37 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraController : MonoBehaviour {
+
+	/*public GameObject player;
+
+	private Vector3 offset;
+
+	// Use this for initialization
+	void Start () {
+		offset = transform.position - player.transform.position;
+	}
+	
+	// Update is called once per frame
+	void LateUpdate () {
+		transform.position = player.transform.position + offset;
+	}
+	*/
+
+	public Transform target;
+	public float smoothing = 5f;
+
+	Vector3 offset;
+
+	void Start()
+	{
+		offset = transform.position - target.position;
+	}
+
+	void FixedUpdate()
+	{
+		Vector3 targetCamPos = target.position + offset;
+		transform.position = Vector3.Lerp (transform.position, targetCamPos, smoothing * Time.deltaTime);
+	}
+}
